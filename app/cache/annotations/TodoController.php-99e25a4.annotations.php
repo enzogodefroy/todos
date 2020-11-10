@@ -22,6 +22,10 @@ return array(
   'controllers\\TodoController::setLoader' => array(
     array('#name' => 'param', '#type' => 'mindplay\\annotations\\standard\\ParamAnnotation', 'type' => '\\services\\TodoSessionLoader', 'name' => 'loader')
   ),
+  'controllers\\TodoController::delete' => array(
+    array('#name' => 'param', '#type' => 'mindplay\\annotations\\standard\\ParamAnnotation', 'type' => 'string', 'name' => 'id'),
+    array('#name' => 'get', '#type' => 'Ubiquity\\annotations\\router\\GetAnnotation', 'delete/{id}')
+  ),
   'controllers\\TodoController::index' => array(
     array('#name' => 'route', '#type' => 'Ubiquity\\annotations\\router\\RouteAnnotation', '_default')
   ),

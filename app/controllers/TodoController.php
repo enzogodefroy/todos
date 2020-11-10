@@ -32,7 +32,32 @@ class TodoController extends ControllerBase {
 		$dt->setFields ( [ 
 				'caption'
 		] );
-		$dt->addDeleteButton ();
+		$bt = $dt->addDeleteButton ();
+		/*
+		 * $dt->setValueFunction ( 'caption', function ($va, $instance) {
+		 * $lbl = new HtmlLabel ( '', $v );
+		 * $lbl->addIcon ( 'user' );
+		 * $lbl->setProperty ( 'data-truc', $instance->getcaption () );
+		 * } );
+		 * $dt->fieldAsLabel ( 'caption', 'tag' );
+		 * $dt->setIdentifier ( 'getcaption' );
+		 */
+		$dt->setEdition ();
+		$this->jquery->getOnClick ( '._delete', 'delete', '#response', [ 
+				'hasLoader' => 'internal',
+				'attr' => 'data-ajax'
+		] );
+	}
+
+	/**
+	 *
+	 * @param string $id
+	 * @get('delete/{id}')
+	 */
+	public function delete(string $id) {
+		$this->loader->remove ( $id );
+		$msg = $this->jquery->semantic ()->htmlMessage ( '', 'Item supprimé' );
+		$this->_index ( $msg );
 	}
 
 	/**

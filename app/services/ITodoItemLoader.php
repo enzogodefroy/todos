@@ -18,7 +18,7 @@ interface ITodoItemLoader {
 	 * @param int $id
 	 * @return bool
 	 */
-	public function remove(int $id): bool;
+	public function remove(string $id): bool;
 
 	/**
 	 *
